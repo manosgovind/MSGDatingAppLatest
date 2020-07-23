@@ -1,5 +1,6 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
+//using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using DatingAppLatest.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+//using Microsoft.IdentityModel.Tokens;
 
 
 namespace DatingAppLatest.API.Controllers
@@ -81,6 +83,8 @@ namespace DatingAppLatest.API.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
             //var token = tokenHandler.CreateToken()
             // just a comment to check the git status
+
+            
         }
 
     }
