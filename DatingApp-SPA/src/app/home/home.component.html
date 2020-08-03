@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <div *ngIf="!RegMode" style="text-align: center">
+    <h1>Find your match</h1>
+    <p class="lead">Come on in to view your matches... All you need to do is sign up!</p>
+    <div class="text-center">
+      <button class="btn btn-primary btn-lg mr-2" (click)=RegModeON(); >Register</button>
+      <button class="btn btn-info btn-lg">Learn more</button>
+    </div>
+  </div>
+
+  <div *ngIf="RegMode" class="container">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <!-- // valueFromHome is an InputProperty used for sending an input  to Regsiter Compo 
+              & cancelRegister is an OutputProperty used for getting value from Reg Compo. -->
+          <app-register [valueFromHome]=vals (cancelRegister)="CancelRegMode($event)"></app-register>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+<!-- <p *ngFor="let item of vals" >{{item.name}}</p> -->

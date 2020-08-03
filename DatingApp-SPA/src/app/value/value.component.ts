@@ -6,9 +6,10 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './value.component.html',
   styleUrls: ['./value.component.css']
 })
+
 export class ValueComponent implements OnInit {
 vals: any; // class property
-projTitle  = 'MSG Dating APP v1';
+projTitle  = 'Dating APP v1';
   constructor(private http: HttpClient) { }
 
   ngOnInit() {

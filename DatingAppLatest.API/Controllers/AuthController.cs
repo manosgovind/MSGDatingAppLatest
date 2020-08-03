@@ -48,7 +48,7 @@ namespace DatingAppLatest.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDTO userLoginDTO)
         {
-            var userFromRepo = await _authRepo.Login(userLoginDTO.UserName, userLoginDTO.Password);
+            var userFromRepo = await _authRepo.Login(userLoginDTO.UserName.ToLower(), userLoginDTO.Password);
 
             if (userFromRepo == null)
                 return Unauthorized();
@@ -70,7 +70,7 @@ namespace DatingAppLatest.API.Controllers
 
 
 
-            var tokenDescriptor1 = new SecurityTokenDescriptor
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
 
                 Subject = new ClaimsIdentity(claims),
@@ -81,9 +81,13 @@ namespace DatingAppLatest.API.Controllers
 
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            //var token = tokenHandler.CreateToken()
+            var token = tokenHandler.CreateToken(tokenDescriptor);
             // just a comment to check the git status
 
+             return Ok(new
+            {
+                token = tokenHandler.WriteToken(token),
+            });
             
         }
 
