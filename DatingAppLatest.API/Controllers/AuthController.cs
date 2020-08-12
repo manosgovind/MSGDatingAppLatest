@@ -48,6 +48,10 @@ namespace DatingAppLatest.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDTO userLoginDTO)
         {
+            // try
+            // {
+            // throw new Exception("manual error");
+
             var userFromRepo = await _authRepo.Login(userLoginDTO.UserName.ToLower(), userLoginDTO.Password);
 
             if (userFromRepo == null)
@@ -88,7 +92,11 @@ namespace DatingAppLatest.API.Controllers
             {
                 token = tokenHandler.WriteToken(token),
             });
-            
+            // }
+            // catch
+            // {
+            //     return StatusCode(500,"error caught!!");
+            // }
         }
 
     }

@@ -22,7 +22,7 @@ export class NavComponent implements OnInit {
     this.authservice.login(this.mod).subscribe(next => {
       console.log('Logged in successfully.');
     }, error => {
-      console.log('Login Failed.');
+      console.log(error);
     });
   }
 
