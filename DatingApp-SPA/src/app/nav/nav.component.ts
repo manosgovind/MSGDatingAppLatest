@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { AlertifyService } from '../_services/alertify.service';
 
 @Component({
   selector: 'app-nav',
@@ -12,7 +13,7 @@ export class NavComponent implements OnInit {
   mod: any = {};
 
   // injecting  auth service to access the methods created in the authservice 
-  constructor(private authservice: AuthService) { }
+  constructor(private authservice: AuthService, private alertify: AlertifyService) { }
 
   ngOnInit() {
   }
@@ -20,9 +21,9 @@ export class NavComponent implements OnInit {
   // msg - writing a method called login, this consumes login method from authservice
   login() {
     this.authservice.login(this.mod).subscribe(next => {
-      console.log('Logged in successfully.');
+      this.alertify.success('Logged in successfully.');
     }, error => {
-      console.log(error);
+      this.alertify.error(error);
     });
   }
 
@@ -33,7 +34,7 @@ export class NavComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
-    console.log('Logged out!');
+    this.alertify.message('Logged out!');
   }
 
 }
