@@ -13,7 +13,7 @@ export class NavComponent implements OnInit {
   mod: any = {};
 
   // injecting  auth service to access the methods created in the authservice 
-  constructor(private authservice: AuthService, private alertify: AlertifyService) { }
+  constructor(public authservice: AuthService, private alertify: AlertifyService) { }
 
   ngOnInit() {
   }
@@ -28,8 +28,9 @@ export class NavComponent implements OnInit {
   }
 
   isLoggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token; // msg -- means if something is there in the token return true, else return false.
+    return this.authservice.loggedIn();
+
+   // return !!token; // msg -- means if something is there in the token return true, else return false.
   }
 
   logout() {
