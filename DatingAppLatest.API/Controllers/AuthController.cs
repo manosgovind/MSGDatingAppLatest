@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DatingAppLatest.API.Data;
 using DatingAppLatest.API.DTOs;
 using DatingAppLatest.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -40,11 +41,11 @@ namespace DatingAppLatest.API.Controllers
                 UserName = userDto.UserName
             };
 
-            var createdUser = _authRepo.Register(userToCreate, userDto.Password);
+            var createdUser =  _authRepo.Register(userToCreate, userDto.Password);
             // return CreatedAtRoute
             return StatusCode(201);
         }
-
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDTO userLoginDTO)
         {
@@ -90,7 +91,7 @@ namespace DatingAppLatest.API.Controllers
 
              return Ok(new
             {
-                token = tokenHandler.WriteToken(token),
+                mtoken = tokenHandler.WriteToken(token),
             });
             // }
             // catch

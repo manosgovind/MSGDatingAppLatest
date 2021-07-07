@@ -13,9 +13,11 @@ export class NavComponent implements OnInit {
   // msg - declaring a variable named model of type 'any'
   mod: any = {};
 
-  // injecting  auth service to access the methods created in the authservice 
-  constructor(public authservice: AuthService, private alertify: AlertifyService,
-    private router: Router) { }
+  // injecting  auth service to access the methods created in the authservice
+
+  constructor(public authservice: AuthService,
+              private alertify: AlertifyService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -34,7 +36,7 @@ export class NavComponent implements OnInit {
   isLoggedIn() {
     return this.authservice.loggedIn();
 
-    // return !!token; // msg -- means if something is there in the token return true, else return false.
+    // return !!token; // msg -- !! means if something is there in the token return true, else return false.
   }
 
   logout() {

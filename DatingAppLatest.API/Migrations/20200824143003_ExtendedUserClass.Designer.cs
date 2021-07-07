@@ -3,14 +3,16 @@ using System;
 using DatingAppLatest.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DatingAppLatest.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200824143003_ExtendedUserClass")]
+    partial class ExtendedUserClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,12 +52,6 @@ namespace DatingAppLatest.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("City")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("TEXT");
 
@@ -83,9 +79,6 @@ namespace DatingAppLatest.API.Migrations
                     b.Property<string>("gender")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("interests")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("knownAs")
                         .HasColumnType("TEXT");
 
@@ -111,7 +104,7 @@ namespace DatingAppLatest.API.Migrations
             modelBuilder.Entity("DatingAppLatest.API.Models.Photo", b =>
                 {
                     b.HasOne("DatingAppLatest.API.Models.User", "User")
-                        .WithMany("Photos")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

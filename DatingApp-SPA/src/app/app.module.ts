@@ -42,7 +42,7 @@ import { appRoutes } from './routes';
       ErrorInterceptorProvider // calling the provider to handle error
    ],
    bootstrap: [
-      AppComponent// thisisthestartupcomponent--previously it was AppComponent
+      AppComponent// this is the startup component--previously it was AppComponent
    ]
 })
 export class AppModule { }
